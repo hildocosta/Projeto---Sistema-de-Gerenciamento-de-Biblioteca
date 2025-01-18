@@ -193,7 +193,88 @@ services:
    mvn spring-boot:run
    ```  
 
-3. Acesse os endpoints da API utilizando uma ferramenta como Postman ou cURL.  
+3. Acesse os endpoints da API utilizando uma ferramenta como Postman ou cURL.
+
+
+Passo 2: Criar as Entidades e o Modelo de Dados
+Objetivo
+Mapear as entidades principais do sistema no código. Isso inclui a criação das classes que representam os dados armazenados no MongoDB e que serão consumidos do RabbitMQ.
+
+2. Criar as Entidades
+a. Entidade Book
+A entidade Book representa os livros na biblioteca. Crie o arquivo Book.java no pacote model com o seguinte conteúdo:
+
+package com.example.library.model;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "books") // Define a coleção no MongoDB
+public class Book {
+
+    @Id
+    private String id;          // Identificador único
+    private String title;       // Título do livro
+    private String author;      // Autor do livro
+    private String genre;       // Gênero literário
+    private double price;       // Preço do livro
+
+    // Construtor padrão
+    public Book() {}
+
+    // Construtor completo
+    public Book(String id, String title, String author, String genre, double price) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.price = price;
+    }
+
+    // Getters e Setters
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+}
+
+
+
 
 ---
 
