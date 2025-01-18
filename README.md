@@ -273,6 +273,80 @@ public class Book {
     }
 }
 
+b. Entidade Loan
+A entidade Loan representa os empréstimos de livros. Crie o arquivo Loan.java no pacote model com o seguinte conteúdo:
+
+package com.example.library.model;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDate;
+
+@Document(collection = "loans") // Define a coleção no MongoDB
+public class Loan {
+
+    @Id
+    private String id;          // Identificador único
+    private String bookId;      // ID do livro emprestado
+    private String borrower;    // Nome do usuário que pegou o livro
+    private LocalDate loanDate; // Data do empréstimo
+    private LocalDate dueDate;  // Data de devolução prevista
+
+    // Construtor padrão
+    public Loan() {}
+
+    // Construtor completo
+    public Loan(String id, String bookId, String borrower, LocalDate loanDate, LocalDate dueDate) {
+        this.id = id;
+        this.bookId = bookId;
+        this.borrower = borrower;
+        this.loanDate = loanDate;
+        this.dueDate = dueDate;
+    }
+
+    // Getters e Setters
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
+    }
+
+    public String getBorrower() {
+        return borrower;
+    }
+
+    public void setBorrower(String borrower) {
+        this.borrower = borrower;
+    }
+
+    public LocalDate getLoanDate() {
+        return loanDate;
+    }
+
+    public void setLoanDate(LocalDate loanDate) {
+        this.loanDate = loanDate;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+}
+
 
 
 
