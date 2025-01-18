@@ -347,7 +347,30 @@ public class Loan {
     }
 }
 
+4. Criar os Repositórios
+a. Repositório BookRepository
+No pacote repository, crie a interface BookRepository.java para manipular dados de livros:
 
+
+package com.example.library.repository;
+
+import com.example.library.model.Book;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface BookRepository extends MongoRepository<Book, String> {
+}
+
+
+b. Repositório LoanRepository
+No mesmo pacote, crie a interface LoanRepository.java para manipular dados de empréstimos:
+
+package com.example.library.repository;
+
+import com.example.library.model.Loan;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface LoanRepository extends MongoRepository<Loan, String> {
+}
 
 
 ---
